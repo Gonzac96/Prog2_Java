@@ -1,53 +1,50 @@
-//package Parciales.Parcial2025.Segundo.Veterinaria;
-
 import java.util.ArrayList;
 
 public class Inventario {
 
-  private ArrayList<Avicolas> avicolas;
-  private ArrayList<Caceras> caceras;
+  private ArrayList<Auto> autos;
+  private ArrayList<Moto> motos;
 
   public Inventario() {
-    this.avicolas = new ArrayList<>();
-    this.caceras = new ArrayList<>();
+    this.autos = new ArrayList<>();
+    this.motos = new ArrayList<>();
   }
 
-  // ================ MÉTODOS CRUD PARA AVICOLAS ================
+  // ================ MÉTODOS CRUD PARA AUTOS ================
 
-  public boolean agregarAvicola(Avicolas avicola) {
-
-    if (!avicolas.stream().anyMatch(a -> a.getNombre().equals(avicola.getNombre()))) {
-      avicolas.add(avicola);
+  public boolean AgregarAuto(Auto auto) {
+    if (!autos.stream().anyMatch(a -> a.getPatente().equals(auto.getPatente()))) {
+      autos.add(auto);
       return true;
     }
-    return false; // Ya existe un animal avícola con ese nombre
+    return false; // Ya existe un auto con esa patente
   }
 
-  public boolean actualizarAvicola(String nombre, Avicolas avicolaActualizada) {
-    for (int i = 0; i < avicolas.size(); i++) {
-      if (avicolas.get(i).getNombre().equals(nombre)) {
-        avicolas.set(i, avicolaActualizada);
+  public boolean actualizarAuto(String patente, Auto autoActualizado) {
+    for (int i = 0; i < autos.size(); i++) {
+      if (autos.get(i).getPatente().equals(patente)) {
+        autos.set(i, autoActualizado);
         return true;
       }
     }
     return false;
   }
 
-  // ================ MÉTODOS CRUD PARA CACERAS ================
+  // ================ MÉTODOS CRUD PARA MOTOS ================
 
-  public boolean agregarCacera(Caceras cacera) {
-    if (!caceras.stream().anyMatch(c -> c.getNombre().equals(cacera.getNombre()))) {
-      caceras.add(cacera);
+  public boolean agregarMoto(Moto moto) {
+    if (!motos.stream().anyMatch(m -> m.getPatente().equals(moto.getPatente()))) {
+      motos.add(moto);
       return true;
     }
-    return false; // Ya existe un animal cazador con ese nombre
+    return false; // Ya existe una moto con esa patente
   }
 
-  // Actualizar Cacera
-  public boolean actualizarCacera(String nombre, Caceras caceraActualizada) {
-    for (int i = 0; i < caceras.size(); i++) {
-      if (caceras.get(i).getNombre().equals(nombre)) {
-        caceras.set(i, caceraActualizada);
+  // Actualizar Moto
+  public boolean actualizarMoto(String patente, Moto motoActualizada) {
+    for (int i = 0; i < motos.size(); i++) {
+      if (motos.get(i).getPatente().equals(patente)) {
+        motos.set(i, motoActualizada);
         return true;
       }
     }
@@ -56,17 +53,17 @@ public class Inventario {
 
   // ================ MÉTODOS DE CONSULTA GENERAL ================
 
-  public Animalito buscarAnimal(String nombre) {
+  public Vehiculo buscarVehiculo(String patente) {
 
-    for (Avicolas avicola : avicolas) {
-      if (avicola.getNombre().equals(nombre)) {
-        return avicola;
+    for (Auto auto : autos) {
+      if (auto.getPatente().equals(patente)) {
+        return auto;
       }
     }
 
-    for (Caceras cacera : caceras) {
-      if (cacera.getNombre().equals(nombre)) {
-        return cacera;
+    for (Moto moto : motos) {
+      if (moto.getPatente().equals(patente)) {
+        return moto;
       }
     }
 
@@ -74,44 +71,44 @@ public class Inventario {
 
   }
 
-  public boolean eliminarAnimal(String nombre) {
-    // Intentar eliminar de avícolas
-    boolean eliminadoDeAvicolas = avicolas.removeIf(avicola -> avicola.getNombre().equals(nombre));
-    boolean eliminadoDeCaceras = caceras.removeIf(cacera -> cacera.getNombre().equals(nombre));
-    if (eliminadoDeAvicolas || eliminadoDeCaceras) {
+  public boolean eliminarVehiculo(String patente) {
+    // Intentar eliminar de autos
+    boolean eliminadoDeAutos = autos.removeIf(auto -> auto.getPatente().equals(patente));
+    boolean eliminadoDeMotos = motos.removeIf(moto -> moto.getPatente().equals(patente));
+    if (eliminadoDeAutos || eliminadoDeMotos) {
       return true;
     }
-    return eliminadoDeCaceras;
+    return eliminadoDeMotos;
   }
 
-  public String getCantidadDeAnimales() {
-    return "Total de animales: " + (avicolas.size() + caceras.size());
+  public String getCantidadDeVehiculos() {
+    return "Total de vehículos: " + (autos.size() + motos.size());
   }
 
   // Obtener listas completas
-  public ArrayList<Avicolas> getAvicolas() {
-    return new ArrayList<>(avicolas);
+  public ArrayList<Auto> getAutos() {
+    return new ArrayList<>(autos);
   }
 
-  public ArrayList<Caceras> getCaceras() {
-    return new ArrayList<>(caceras);
+  public ArrayList<Moto> getMotos() {
+    return new ArrayList<>(motos);
   }
 
-  // Listar todos los animales
-  public void listarTodosLosAnimales() {
-    System.out.println("=== INVENTARIO DE ANIMALES ===\n");
+  // Listar todos los vehículos
+  public void listarTodosLosVehiculos() {
+    System.out.println("=== INVENTARIO DE VEHÍCULOS ===");
 
-    System.out.println("\nAVÍCOLAS (" + avicolas.size() + "):");
-    avicolas.forEach(avicola -> System.out.println(avicola.toString()));
+    System.out.println("\nAUTOS (" + autos.size() + "):");
+    autos.forEach(auto -> System.out.println(auto.toString()));
 
-    System.out.println("\nCAZADORES (" + caceras.size() + "):");
-    caceras.forEach(cacera -> System.out.println(cacera.toString()));
+    System.out.println("\nMOTOS (" + motos.size() + "):");
+    motos.forEach(moto -> System.out.println(moto.toString()));
 
-    System.out.println("\nTotal de animales: " + getCantidadDeAnimales());
+    System.out.println("\nTotal de vehículos: " + getCantidadDeVehiculos());
   }
 
-  // Verificar si existe un animal con ese nombre
-  public boolean existeAnimal(String nombre) {
-    return buscarAnimal(nombre) != null;
+  // Verificar si existe un vehículo con esa patente
+  public boolean existeVehiculo(String patente) {
+    return buscarVehiculo(patente) != null;
   }
 }
