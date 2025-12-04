@@ -8,6 +8,7 @@ import Modelo.Vehiculo;
 public class Auto extends Vehiculo {
 
     private TipoCarroceria carroceria;
+    private int cantidadPuertas;
 
     // Constructor vacío
     public Auto() {
@@ -15,9 +16,10 @@ public class Auto extends Vehiculo {
     }
 
     // Constructor con parámetros
-    public Auto(Marca marca, String modelo, int anio, Color color, boolean esUsado, double precio, TipoCarroceria carroceria) {
+    public Auto(Marca marca, String modelo, int anio, Color color, boolean esUsado, double precio, TipoCarroceria carroceria, int cantidadPuertas) {
         super(marca, modelo, anio, color, esUsado, precio);
         this.carroceria = carroceria;
+        this.cantidadPuertas = cantidadPuertas;
     }
 
     // Getters y Setters
@@ -26,6 +28,12 @@ public class Auto extends Vehiculo {
     }
     public void setCarroceria(TipoCarroceria carroceria) {
         this.carroceria = carroceria;
+    }
+    public int getCantidadPuertas() {
+        return cantidadPuertas;
+    }
+    public void setCantidadPuertas(int cantidadPuertas) {
+        this.cantidadPuertas = cantidadPuertas;
     }
 
     @Override
