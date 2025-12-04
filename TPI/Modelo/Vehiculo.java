@@ -6,7 +6,9 @@ import java.io.Serializable;
 
 /*
     Clase abstracta que representa un Vehículo genérico.
-    Cumple con el patrón JavaBean.
+    Cumple con requerimentos básicos del patrón JavaBean.
+    También hace que las clases hijas (Auto, Moto, Camioneta) hereden sus atributos y métodos comunes,
+    y por lo tanto, estas cumplen con el patrón JavaBean también.
 */
 public abstract class Vehiculo implements Serializable {
     
@@ -79,7 +81,7 @@ public abstract class Vehiculo implements Serializable {
     }
 
     public void setPrecio(double precio) {
-        // Ejemplo de validación (Lógica de Negocio básica en el modelo)
+        // Validación (Lógica de Negocio básica en el modelo)
         if (precio < 0) {
             throw new IllegalArgumentException("El precio no puede ser negativo");
         }
@@ -90,10 +92,9 @@ public abstract class Vehiculo implements Serializable {
     @Override
     public String toString() {
         return "Marca: " + marca + " | Modelo: " + modelo + " | Año: " + anio + 
-               " | Color: " + color + " | Usado: " + (esUsado ? "Sí" : "No") + 
-               " | Precio: $" + precio;
+        " | Color: " + color + " | Usado: " + (esUsado ? "Sí" : "No") + " | Precio: $" + precio;
     }
-    
+     
     // Método abstracto (opcional): Si quisieras obligar a los hijos a tener un comportamiento específico
     // public abstract void mostrarDetallesTecnicos();
 }
