@@ -102,6 +102,7 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo>, Ma
     }
 
     // Implementación de métodos de la interfaz Mantenimiento
+    // (no tiene que implementar ningún método porque la clase es abstracta, pero se hace para que las subclases lo hereden)
     @Override
     public void realizarServicioTecnico() {
         if (this.esUsado) {
