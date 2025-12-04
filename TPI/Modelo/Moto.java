@@ -1,9 +1,9 @@
-package Negocio;
+package Modelo;
 
 import Dato.Color;
 import Dato.Marca;
 import Dato.TipoMoto;
-import Modelo.Vehiculo;
+import Excepciones.CilindradaInvalidaException;
 
 public class Moto extends Vehiculo {
 
@@ -16,9 +16,15 @@ public class Moto extends Vehiculo {
     }
 
     // Constructor con parámetros
-    public Moto(Marca marca, String modelo, int anio, Color color, boolean esUsado, double precio, TipoMoto tipo, int cilindrada) {
+    public Moto(Marca marca, String modelo, int anio, Color color, boolean esUsado, double precio, TipoMoto tipo, int cilindrada) 
+    throws CilindradaInvalidaException {
         super(marca, modelo, anio, color, esUsado, precio);
         this.tipo = tipo;
+
+        if (cilindrada < 50) {
+            throw new CilindradaInvalidaException("Error: La cilindrada mínima para una moto es de 50 cc. Cilindrada ingresada: " + cilindrada);
+        }
+
         this.cilindrada = cilindrada;
     }
 

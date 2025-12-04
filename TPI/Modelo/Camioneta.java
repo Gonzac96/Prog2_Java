@@ -1,9 +1,8 @@
-package Negocio;
+package Modelo;
 
 import Dato.Color;
 import Dato.Marca;
 import Dato.TipoCarroceria;
-import Modelo.Vehiculo;
 
 public class Camioneta extends Vehiculo{
 

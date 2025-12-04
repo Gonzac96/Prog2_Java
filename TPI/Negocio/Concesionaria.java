@@ -13,11 +13,11 @@ import java.util.List;
 public class Concesionaria {
     
     private List<Vehiculo> inventario;
-    private String nombreEmpresa = "Autazos S.A.";
-    private String direccion = "Calle Falsa 123";
-    private String ubicacion = "Resistencia, Chaco";
-    private String telefono = "+549-362-4123456";
-    private String email = "az@gmail.com";
+    private String nombreEmpresa;
+    private String direccion;
+    private String ubicacion;
+    private String telefono;
+    private String email;
 
     // Constructor
     public Concesionaria(String nombreEmpresa, String direccion, String ubicacion, String telefono, String email) {
@@ -28,6 +28,17 @@ public class Concesionaria {
         this.email = email;
         this.inventario = new ArrayList<>();
     }
+
+    // Constructor de prueba con datos por defecto
+    public Concesionaria() {
+        this.nombreEmpresa = "Concesionaria XYZ";
+        this.direccion = "Av. Siempre Viva 123";
+        this.ubicacion = "Ciudad Ficticia";
+        this.telefono = "+54 9 11 1234-5678";
+        this.email = "xyz@gmail.com";
+        this.inventario = new ArrayList<>();
+    }
+
 
     // Método para agregar vehículos al inventario (CREATE)
     public void agregarVehiculo(Vehiculo vehiculo) {
@@ -88,12 +99,6 @@ public class Concesionaria {
     }
     public void setInventario(List<Vehiculo> inventario) {
         this.inventario = inventario;
-    }
-    public String getNombreEmpresa() {
-        return nombreEmpresa;
-    }
-    public void setNombreEmpresa(String nombreEmpresa) {
-        this.nombreEmpresa = nombreEmpresa;
     }
 
 }
