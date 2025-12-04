@@ -10,7 +10,7 @@ import java.io.Serializable;
     También hace que las clases hijas (Auto, Moto, Camioneta) hereden sus atributos y métodos comunes,
     y por lo tanto, estas cumplen con el patrón JavaBean también.
 */
-public abstract class Vehiculo implements Serializable {
+public abstract class Vehiculo implements Serializable, Comparable<Vehiculo>, Mantenimiento {
     
     // 1. Atributos Privados (Encapsulamiento)
     private Marca marca;
@@ -94,7 +94,29 @@ public abstract class Vehiculo implements Serializable {
         return "Marca: " + marca + " | Modelo: " + modelo + " | Año: " + anio + 
         " | Color: " + color + " | Usado: " + (esUsado ? "Sí" : "No") + " | Precio: $" + precio;
     }
-     
+
+    // Implementación de Comparable para ordenar vehículos por precio
+    @Override
+    public int compareTo(Vehiculo otroVehiculo) {
+        return Double.compare(this.precio, otroVehiculo.precio);
+    }
+
+    // Implementación de métodos de la interfaz Mantenimiento
+    @Override
+    public void realizarServicioTecnico() {
+        if (this.esUsado) {
+            System.out.println("Realizando servicio técnico al vehículo: " + this.modelo + " | Marca " + this.marca + " | Año " + this.anio);
+        } else {
+            System.out.println("El vehículo es 0km, no requiere servicio técnico.");
+        }
+    }
+    @Override
+    public void lavarVehiculo() {
+        System.out.println("Lavando el vehículo: " + this.modelo + " | Marca " + this.marca + " | Año " + this.anio);
+    }
+
+
+
     // Método abstracto (opcional): Si quisieras obligar a los hijos a tener un comportamiento específico
     // public abstract void mostrarDetallesTecnicos();
 }
