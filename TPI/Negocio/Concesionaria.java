@@ -62,7 +62,7 @@ public class Concesionaria {
     // Método para buscar un vehículo por su modelo (READ)
     // Va a retornar una sublista de vehículos que coincidan con el modelo buscado (sirve para el menú)
     public List<Vehiculo> buscarVehiculoPorModelo(String modeloBusqueda) {
-        List<Vehiculo> resultados = new ArrayList<>();
+        List<Vehiculo> resultados = new ArrayList<>(); // eficiente para acceder a elementos y recorrer
         // Paso a mayúsculas para evitar problemas de case sensitive
         String busqueda = modeloBusqueda.toUpperCase();
 

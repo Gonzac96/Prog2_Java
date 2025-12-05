@@ -116,8 +116,4 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo>, Ma
         System.out.println("Lavando el vehículo: " + this.modelo + " | Marca " + this.marca + " | Año " + this.anio);
     }
 
-
-
-    // Método abstracto (opcional): Si quisieras obligar a los hijos a tener un comportamiento específico
-    // public abstract void mostrarDetallesTecnicos();
 }

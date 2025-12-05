@@ -1,7 +1,7 @@
 package Vista;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
+//import java.util.InputMismatchException;
 
 /*
     Clase para mostrar el menú principal
@@ -23,7 +23,7 @@ public class Menu {
         System.out.println("┌──────────────────────────────────────────────┐");
         System.out.println("│  1 │  Agregar nuevo vehículo                 │");
         System.out.println("│  2 │  Ver inventario completo                │");
-        System.out.println("│  3 │  Buscar vehículos por Marca             │");
+        System.out.println("│  3 │  Buscar vehículos por Modelo            │");
         System.out.println("│  4 │  Eliminar vehículo                      │");        
         System.out.println("│  5 │  Ingresar vehículo usado al Taller      │");
         System.out.println("│  6 │  Procesar siguiente vehículo en Taller  │");
@@ -41,11 +41,8 @@ public class Menu {
             String entrada = sc.nextLine();
             opcion = Integer.parseInt(entrada);
         } catch (NumberFormatException e) {
-            System.out.println("Opción inválida. Por favor, ingrese un número válido.");
-            sc.nextLine(); // Limpiar el buffer en caso de error
-        } catch (InputMismatchException e) {
-            System.out.println("Opción inválida. Por favor, ingrese un número válido.");
-            sc.nextLine(); // Limpiar el buffer en caso de error
+            System.out.println("Opción inválida. Por favor, ingrese un número.");
+            //sc.nextLine(); // Limpiar el buffer en caso de error
         }
         return opcion;
     }
@@ -58,7 +55,7 @@ public class Menu {
     // Método para leer un String
     public String leerDatoString(String mensaje) {
         System.out.println(mensaje + ": ");
-        return sc.nextLine();
+        return sc.nextLine().toUpperCase();
     }
 
     // Método para pedir un dato double

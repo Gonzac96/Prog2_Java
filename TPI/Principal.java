@@ -35,7 +35,7 @@ public class Principal {
                         concesionaria.mostrarInventario();
                         break;
                     case 3:
-                        // Lógica para buscar vehículos por marca
+                        // Lógica para buscar vehículos por MODELO
                         String modeloBuscado = menu.leerDatoString("Ingrese el modelo a buscar");
                         List<Vehiculo> resultados = concesionaria.buscarVehiculoPorModelo(modeloBuscado);
 
@@ -59,6 +59,7 @@ public class Principal {
                             // se elimina el primer vehículo encontrado con ese modelo
                             concesionaria.eliminarVehiculo(vehiculosAEliminar.get(0));
                         }
+                        break;
                     case 5:
                         // Lógica para ingresar vehículo usado al taller
                         // Creo auto usado para pruebas
@@ -131,7 +132,7 @@ public class Principal {
             // double precio = menu.pedirDatoDouble("Ingrese precio");
 
             Marca marca = elegirEnum(menu, Marca.values(), "Marca");
-            String modelo = menu.leerDatoString("Ingrese el modelo").toUpperCase();
+            String modelo = menu.leerDatoString("Ingrese el modeloaasdasda").toUpperCase();
             int anio = (int) menu.pedirDatoDouble("Ingrese el año de fabricación");
             Color color = elegirEnum(menu, Color.values(), "Color");
             boolean esUsado = preguntarEsUsado(menu);
@@ -188,16 +189,16 @@ public class Principal {
         System.out.println("--- Cargando datos de prueba... ---");
         try {
             // Autos
-            Auto a1 = new Auto(Marca.TOYOTA, "Corolla", 2020, Color.BLANCO, true, 18000, TipoCarroceria.SEDAN, 4);
-            Auto a2 = new Auto(Marca.FORD, "Fiesta", 2018, Color.AZUL, true, 12000, TipoCarroceria.OTRO, 5);
-            Auto a3 = new Auto(Marca.FIAT, "Cronos", 2024, Color.ROJO, false, 22000, TipoCarroceria.SEDAN, 4);
+            Auto a1 = new Auto(Marca.TOYOTA, "COROLLA", 2020, Color.BLANCO, true, 18000, TipoCarroceria.SEDAN, 4);
+            Auto a2 = new Auto(Marca.FORD, "FIESTA", 2018, Color.AZUL, true, 12000, TipoCarroceria.OTRO, 5);
+            Auto a3 = new Auto(Marca.FIAT, "CRONOS", 2024, Color.ROJO, false, 22000, TipoCarroceria.SEDAN, 4);
             
             // Motos
-            Moto m1 = new Moto(Marca.HONDA, "Wave", 2023, Color.NEGRO, false, 2000, TipoMoto.STREET, 110);
-            Moto m2 = new Moto(Marca.YAMAHA, "Tenere", 2015, Color.AZUL, true, 9000, TipoMoto.CUSTOM, 250);
+            Moto m1 = new Moto(Marca.HONDA, "WAVE", 2023, Color.NEGRO, false, 2000, TipoMoto.STREET, 110);
+            Moto m2 = new Moto(Marca.YAMAHA, "TENERE", 2015, Color.AZUL, true, 9000, TipoMoto.CUSTOM, 250);
 
             // Camioneta
-            Camioneta c1 = new Camioneta(Marca.TOYOTA, "Hilux", 2019, Color.GRIS, true, 35000, TipoCarroceria.PICKUP, 1000, 5, "4x4");
+            Camioneta c1 = new Camioneta(Marca.TOYOTA, "HILUX", 2019, Color.GRIS, true, 35000, TipoCarroceria.PICKUP, 1000, 5, "4x4");
 
             concesionaria.agregarVehiculo(a1);
             concesionaria.agregarVehiculo(a2);
