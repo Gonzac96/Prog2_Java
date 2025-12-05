@@ -32,9 +32,9 @@ public class Concesionaria {
     // Constructor de prueba con datos por defecto
     public Concesionaria() {
         this.nombreEmpresa = "Concesionaria XYZ";
-        this.direccion = "Av. Siempre Viva 123";
-        this.ubicacion = "Ciudad Ficticia";
-        this.telefono = "+54 9 11 1234-5678";
+        this.direccion = "Monteagudo 123";
+        this.ubicacion = "Ciudad Resistencia, Chaco";
+        this.telefono = "+54 9 362-4567835";
         this.email = "xyz@gmail.com";
         this.inventario = new ArrayList<>();
     }
@@ -53,8 +53,8 @@ public class Concesionaria {
             System.out.println("El inventario está vacío.");
             return;
         }
-        System.out.println("Inventario de la Concesionaria " + nombreEmpresa + ":");
-        Collections.sort(inventario); // Ordena por precio ascendente (COMPARABLE)
+        System.out.println("Inventario de la Concesionaria " + nombreEmpresa + " (ordenados por precio):");
+        Collections.sort(inventario); // Ordena por precio ascendente(COMPARABLE). El método compareTo está en Vehículo.java
         for (Vehiculo vehiculo : inventario) {
             System.out.println(vehiculo.toString());
         }

@@ -27,6 +27,13 @@ public class Auto extends Vehiculo {
         this.cantidadPuertas = cantidadPuertas;
     }
 
+    // Constructor de prueba con datos por defecto
+    public Auto(Marca marca, String modelo, int anio, Color color, boolean esUsado, double precio) {
+        super(marca, modelo, anio, color, esUsado, precio);
+        this.carroceria = TipoCarroceria.SEDAN;
+        this.cantidadPuertas = 4;
+    }
+
     // Getters y Setters
     public TipoCarroceria getCarroceria() {
         return carroceria;

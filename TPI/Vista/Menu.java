@@ -24,11 +24,13 @@ public class Menu {
         System.out.println("│  1 │  Agregar nuevo vehículo                 │");
         System.out.println("│  2 │  Ver inventario completo                │");
         System.out.println("│  3 │  Buscar vehículos por Marca             │");
-        System.out.println("│  4 │  Ingresar vehículo usado al Taller      │");
-        System.out.println("│  5 │  Procesar siguiente vehículo en Taller  │");
+        System.out.println("│  4 │  Eliminar vehículo                      │");        
+        System.out.println("│  5 │  Ingresar vehículo usado al Taller      │");
+        System.out.println("│  6 │  Procesar siguiente vehículo en Taller  │");
+        System.out.println("│  7 │  Cargar datos de prueba                 │");
+        System.out.println("│  8 │  Mostrar información de contacto        │");
         System.out.println("│  0 │  Salir                                  │");
         System.out.println("└──────────────────────────────────────────────┘");
-        System.out.println("(Seleccione cualquier letra para finalizar)");
         System.out.print("---> Seleccione una opción: ");
     }
 
@@ -36,8 +38,11 @@ public class Menu {
     public int leerOpcion() {
         int opcion = -1;
         try {
-            opcion = sc.nextInt();
-            sc.nextLine(); // Limpiar el buffer
+            String entrada = sc.nextLine();
+            opcion = Integer.parseInt(entrada);
+        } catch (NumberFormatException e) {
+            System.out.println("Opción inválida. Por favor, ingrese un número válido.");
+            sc.nextLine(); // Limpiar el buffer en caso de error
         } catch (InputMismatchException e) {
             System.out.println("Opción inválida. Por favor, ingrese un número válido.");
             sc.nextLine(); // Limpiar el buffer en caso de error
@@ -45,16 +50,27 @@ public class Menu {
         return opcion;
     }
 
-    // Método para validar doubles positivos
-    public double leerDoublePositivo(String mensaje) {
-        
+    // Método para cerrar el Scanner
+    public void cerrarScanner() {
+        sc.close();
+    }
+
+    // Método para leer un String
+    public String leerDatoString(String mensaje) {
+        System.out.println(mensaje + ": ");
+        return sc.nextLine();
+    }
+
+    // Método para pedir un dato double
+    public double pedirDatoDouble(String mensaje) {
         double valor = -1;
         boolean valido = false;
 
         while (!valido) {
+            System.out.println(mensaje + ": ");
+            String entrada = sc.nextLine();
             try {
-                System.out.println(mensaje + ": ");
-                valor = Double.parseDouble(sc.nextLine());
+                valor = Double.parseDouble(entrada);
                 if (valor < 0) {
                     System.out.println("Por favor, ingrese un número positivo.");
                 } else {
@@ -65,11 +81,6 @@ public class Menu {
             }
         }
         return valor;
-    }
-
-    // Método para cerrar el Scanner
-    public void cerrarScanner() {
-        sc.close();
     }
 
 
