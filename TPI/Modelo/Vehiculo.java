@@ -19,6 +19,8 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo>, Ma
     private Color color; // Enum
     private boolean esUsado;
     private double precio;
+    private boolean mantenimiento; // agrego este atributo para saber si el vehículo está en mantenimiento(Taller)
+    private boolean enTaller; // para saber si el vehículo está actualmente en el taller
 
     // 2. Constructor vacío (JavaBean)
     protected Vehiculo() {
@@ -32,7 +34,8 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo>, Ma
         this.color = color;
         this.esUsado = esUsado;
         this.precio = precio;
-    }
+        this.mantenimiento = !esUsado;  // Si NO es usado, el mantenimiento se considera hecho (true)
+    }                                   // Si es usado, el mantenimiento está pendiente (false)
 
     // 3. Getters y Setters (JavaBean)
 
@@ -87,12 +90,26 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo>, Ma
         }
         this.precio = precio;
     }
+    public boolean isMantenimiento() {
+        return mantenimiento;
+    }
+    public void setMantenimiento(boolean mantenimiento) {
+        this.mantenimiento = mantenimiento;
+    }
+    public boolean isEnTaller() {
+        return enTaller;
+    }
+    public void setEnTaller(boolean enTaller) {
+        this.enTaller = enTaller;
+    }
+
 
     // Método toString para mostrar la info básica del vehículo
     @Override
     public String toString() {
         return "Marca: " + marca + " | Modelo: " + modelo + " | Año: " + anio + 
-        " | Color: " + color + " | Usado: " + (esUsado ? "Sí" : "No") + " | Precio: $" + precio;
+        " | Color: " + color + " | Usado: " + (esUsado ? "Sí" : "No") + " | Precio: $" + precio +
+        " | Tiene Mantenimiento: " + (mantenimiento ? "Sí" : "No") + " | En Taller: " + (enTaller ? "Sí" : "No");
     }
 
     // Implementación de Comparable para ordenar vehículos por precio
@@ -107,8 +124,11 @@ public abstract class Vehiculo implements Serializable, Comparable<Vehiculo>, Ma
     public void realizarServicioTecnico() {
         if (this.esUsado) {
             System.out.println("Realizando servicio técnico al vehículo: " + this.modelo + " | Marca " + this.marca + " | Año " + this.anio);
+            // Ahora cambio el estado de mantenimiento a true
+            this.mantenimiento = true;
         } else {
             System.out.println("El vehículo es 0km, no requiere servicio técnico.");
+            this.mantenimiento = true;
         }
     }
     @Override

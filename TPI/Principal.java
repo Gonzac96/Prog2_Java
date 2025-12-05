@@ -62,28 +62,58 @@ public class Principal {
                         break;
                     case 5:
                         // Lógica para ingresar vehículo usado al taller
-                        // Creo auto usado para pruebas
                         System.out.println("--- Ingresando vehículo usado al taller ---");
+                        // 1. La lista filtrada
+                        List<Vehiculo> aMantenimiento = concesionaria.obtenerVehiculosParaMantenimiento();
+
+                        if (aMantenimiento.isEmpty()) {
+                            System.out.println("No hay vehículos usados pendientes de mantenimiento.");
+                        } else {
+                            System.out.println("Seleccione el vehículo a ingresar:");
+                            
+                            // Se muestra la lista numerada
+                            for (int i = 0; i < aMantenimiento.size(); i++) {
+                                System.out.println((i + 1) + ". " + aMantenimiento.get(i).toString());
+                            }
+                            System.out.println("0. Cancelar");
+
+                            // Leemos la opción del usuario
+                            int seleccion = menu.leerOpcion();
+
+                            if (seleccion > 0 && seleccion <= aMantenimiento.size()) {
+                                // Obtenemos el vehículo real (indice - 1)
+                                Vehiculo vSeleccionado = aMantenimiento.get(seleccion - 1);
+                                
+                                // Lo mandamos al taller
+                                taller.ingresarVehiculo(vSeleccionado);
+                                
+                                System.out.println("Vehículo " + vSeleccionado.getModelo() + " ingresado a la cola del taller.");
+                            } else if (seleccion != 0) {
+                                System.out.println("Opción inválida.");
+                            }
+                        }
+                        break;
+                        // Creo auto usado para pruebas
                         // try{
                         //     Auto autoUsado = new Auto(Marca.FORD, "Focus", 2015, Color.GRIS_OSCURO, true, 3500000, TipoCarroceria.SEDAN, 4);
                         //     taller.ingresarVehiculo(autoUsado);
                         // } catch (AutoCantPuertasException e){
                         //     System.out.println(e.getMessage());
                         // }
-                        Vehiculo vehiculoParaTaller = null;
-                        for (Vehiculo v : concesionaria.getInventario()) {
-                            if (v.isEsUsado()) {
-                                vehiculoParaTaller = v;
-                                break;
-                            }
-                        }
-                        if (vehiculoParaTaller != null) {
-                            taller.ingresarVehiculo(vehiculoParaTaller);
-                            System.out.println("Vehículo usado ingresado al taller: " + vehiculoParaTaller.getModelo());
-                        } else {
-                            System.out.println("No hay vehículos usados disponibles en el inventario para ingresar al taller.");
-                        }
-                        break;
+                        // Vehiculo vehiculoParaTaller = null;
+                        // for (Vehiculo v : concesionaria.getInventario()) {
+                        //     if (v.isEsUsado()) {
+                        //         vehiculoParaTaller = v;
+                        //         break;
+                        //     }
+                        // }
+                        // if (vehiculoParaTaller != null) {
+                        //     taller.ingresarVehiculo(vehiculoParaTaller);
+                        //     System.out.println("Vehículo usado ingresado al taller: " + vehiculoParaTaller.getModelo());
+                        // } else {
+                        //     System.out.println("No hay vehículos usados disponibles en el inventario para ingresar al taller.");
+                        // }
+                        // break;
                     case 6:
                         // Lógica para procesar siguiente vehículo en taller
                         System.out.println("--- Procesando siguiente vehículo en el taller ---");

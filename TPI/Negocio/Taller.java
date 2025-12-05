@@ -1,6 +1,8 @@
 package Negocio;
 
-import Modelo.Mantenimiento;
+//import Modelo.Mantenimiento;
+import Modelo.Vehiculo;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -12,7 +14,7 @@ import java.util.Queue;
     que implemente dicha interfaz.
 */
 
-public class Taller<T extends Mantenimiento> {
+public class Taller<T extends Vehiculo> {
     
     // Utilizo una Queue (Cola) para gestionar el orden de ingreso al taller con LinkedList
     // FIFO: First In, First Out (como para ordenar los turnos)
@@ -26,6 +28,9 @@ public class Taller<T extends Mantenimiento> {
 
     // Método para ingresar un vehículo al taller
     public void ingresarVehiculo(T vehiculo) {
+        // Marcamos cuando un vehiculo ingresa al taller
+        vehiculo.setEnTaller(true);
+
         colaMantenimiento.offer(vehiculo); // Agrega al final de la cola
         System.out.println("Vehículo ingresado a la cola para mantenimiento.");
     }
@@ -41,6 +46,9 @@ public class Taller<T extends Mantenimiento> {
             vehiculo.ingresoMantenimiento();
             vehiculo.realizarServicioTecnico();
             vehiculo.lavarVehiculo();
+
+            // Marcamos cuando un vehiculo sale del taller
+            vehiculo.setEnTaller(false);
             System.out.println("Mantenimiento completado para el vehículo.");
         }
     }

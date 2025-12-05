@@ -93,6 +93,21 @@ public class Concesionaria {
                "Email: " + email;
     }
 
+    // Método para retornar una lista de vehículos que necesitan mantenimiento (Taller)
+    // Deben ser vehículos usados que no hayan pasado por mantenimiento aún
+    public List<Vehiculo> obtenerVehiculosParaMantenimiento() {
+        List<Vehiculo> paraMantenimiento = new ArrayList<>();
+        for (Vehiculo vehiculo : inventario) {
+            if (vehiculo.isEsUsado() && !vehiculo.isMantenimiento() && !vehiculo.isEnTaller()) {
+                paraMantenimiento.add(vehiculo);
+            }
+        }
+        return paraMantenimiento;
+    }
+
+
+
+
     // Getters y Setters
     public List<Vehiculo> getInventario() {
         return inventario;
